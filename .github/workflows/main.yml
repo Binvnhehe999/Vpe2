@@ -49,12 +49,6 @@ jobs:
         curl -L -o OBS-Studio-Installer.exe https://cdn-fastly.obsproject.com/downloads/OBS-Studio-30.2.3-Windows-Installer.exe
         Start-Process -Wait -FilePath OBS-Studio-Installer.exe -ArgumentList '/S' # Silent install
         
-    # Install Visual Studio Code
-    - name: Install Visual Studio Code
-      run: |
-        curl -L -o VSCode-Installer.exe https://code.visualstudio.com/sha/download?build=stable&os=win64
-        Start-Process -Wait -FilePath VSCode-Installer.exe -ArgumentList '/silent' # Silent install
-        
     - name: Create Tunnel
 
       run: .\ngrok\ngrok.exe tcp 3389
