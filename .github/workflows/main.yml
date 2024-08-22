@@ -40,15 +40,12 @@ jobs:
 
     - run: Set-LocalUser -Name "runneradmin" -Password (ConvertTo-SecureString -AsPlainText "P@ssw0rd!" -Force)
 
-    - name: Checkout code
-      uses: actions/checkout@v2
+    - name: Create Tunnel
+
+      run: .\ngrok\ngrok.exe tcp 3389
 
     # Install OBS Studio
     - name: Install OBS Studio
       run: |
         curl -L -o OBS-Studio-Installer.exe https://cdn-fastly.obsproject.com/downloads/OBS-Studio-30.2.3-Windows-Installer.exe
         Start-Process -Wait -FilePath OBS-Studio-Installer.exe -ArgumentList '/S' # Silent install
-        
-    - name: Create Tunnel
-
-      run: .\ngrok\ngrok.exe tcp 3389
